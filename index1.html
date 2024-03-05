@@ -1,0 +1,57 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+     span{
+        display:none;
+     }
+    </style>
+</head>
+<body>
+    
+    <form>
+        <input typr="text" placeholder="password"><br><br>
+        <input typr="text" placeholder="confirmpassword"><br><br>
+        <input type="submit"><br>
+        <span>doesn't match</span>
+    </form>
+
+    <script>
+    console.log(document.forms);
+     var b=document.forms;
+     var arr=[];
+     console.log(b[0]);
+
+     b[0].addEventListener("submit",function (e){
+
+     e.preventDefault();
+     console.log(e);
+
+     var obj={
+        password:e.target[0].value,
+        confirmpassword:e.target[1].value,
+        
+
+       }
+       arr.push(obj);
+       
+       console.log(arr);
+
+     if(obj.password!==obj.confirmpassword){
+       var a=document.getElementsByTagName("span")
+       a[0].style.display="inline"
+       a[0].style.color="red";
+
+     }
+
+     e.target[0].value="";
+     e.target[1].value="";
+    })
+    
+    </script>
+</body>
+</html>

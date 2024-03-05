@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+       span{
+        display: none;
+       }
+        
+    </style>
+</head>
+<body>
+    
+    <form>
+        <input type="text" placeholder="username"><br>
+        <span class="w">username can't blank</span><br>
+        
+        <input type="text" placeholder="password"><br>
+        <span class="x">password can't blank</span><br>
+        <input type="text" placeholder="email"><br>
+        <span class="y">email can't blank</span><br>
+        <input type="text" placeholder="dob"><br>
+        <span class="z">dob can't blank</span><br>
+        <input type="submit"><br>
+       
+       
+    </form>
+    <script>
+        
+        
+
+       console.log(document.forms)
+       var d=document.forms
+       var arr=[];
+       
+       console.log(d[0])
+       d[0].addEventListener("submit",function (e){
+        e.preventDefault();
+       console.log(e); 
+       
+       
+      var obj={
+        username:e.target[0].value,
+        password:e.target[1].value,
+        email:e.target[2].value,
+        dob:e.target[3].value
+
+       }
+       arr.push(obj);
+       
+       console.log(arr);
+
+       e.target[0].value="";
+       e.target[1].value="";
+       e.target[2].value="";
+       e.target[3].value="";
+
+       if(obj.username.length!==0 && obj.password.length!==0 && obj.email.length!==0 && obj.dob.length!==0){
+       window.location.assign("./index1.html")
+       }
+
+       
+     if(obj.username.length==0){
+        var s=document.getElementsByClassName("w")
+        s[0].style.display="inline"
+        s[0].style.color="red"
+
+
+     }
+
+     else if(obj.password.length==0){
+        var s=document.getElementsByClassName("x")
+        s[0].style.display="inline"
+        s[0].style.color="red"
+
+
+     }
+    
+     else if(obj.email.length==0){
+        var s=document.getElementsByClassName("y")
+        s[0].style.display="inline"
+        s[0].style.color="red"
+
+
+     }
+    
+     else if(obj.emai){
+        var s=document.getElementsByClassName("y")
+        s[0].style.display="inline"
+        s[0].style.color="red"
+
+
+     }
+
+     else if(obj.dob.length==0){
+        var s=document.getElementsByClassName("z")
+        s[0].style.display="inline"
+        s[0].style.color="red"
+
+
+     }
+     
+   
+
+     localStorage.setItem("username",JSON.stringify(arr));
+
+     for(i=0;i<arr.length;i++){
+      if(arr[i].username==obj.username){
+         var s=document.getElementsByClassName("mm")
+        s[0].style.display="inline"
+        s[0].style.color="red"
+      }
+     }
+
+    
+       })
+
+
+      
+
+        
+       
+    </script>
+</body>
+</html>
